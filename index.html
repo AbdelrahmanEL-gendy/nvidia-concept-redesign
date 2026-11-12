@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NVIDIA Concept Redesign (Unofficial)</title>
+  <meta name="description" content="Unofficial animated concept redesign of the NVIDIA homepage. Not affiliated with NVIDIA." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@200;300;400;500;600;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script type="importmap">
+    { "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"
+    } }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+</head>
+<body class="is-loading">
+
+  <!-- Loader -->
+  <div class="loader" aria-hidden="true">
+    <div class="loader__row mono"><span>NVIDIA</span><span>Concept · 2026</span></div>
+    <div class="loader__count"><span data-count>000</span><sup>%</sup></div>
+    <div class="loader__row mono"><span data-loader-label>Allocating VRAM</span><span>sm_100 · fp4</span></div>
+    <div class="loader__bar"><i></i></div>
+  </div>
+
+  <div class="badge mono">Unofficial concept · Not affiliated with NVIDIA</div>
+
+  <div class="cursor" aria-hidden="true"><i></i><span class="cursor__label mono"></span></div>
+
+  <header class="nav">
+    <a href="#" class="nav__logo" aria-label="NVIDIA home">
+      <span class="nav__glyph"></span><span class="nav__word">NVIDIA</span>
+    </a>
+    <nav class="nav__links">
+      <a href="#">Products</a><a href="#">Solutions</a><a href="#industries">Industries</a><a href="#">Developers</a><a href="#">Company</a>
+    </nav>
+    <a href="#gtc" class="btn btn--pill" data-magnetic>Get started <span class="arr">↗</span></a>
+  </header>
+
+  <main>
+    <!-- ============ STAGE: hero + scroll story over one WebGL scene ============ -->
+    <section class="stage" id="stage">
+      <div class="stage__sticky">
+        <canvas id="gl"></canvas>
+        <div class="vignette"></div>
+        <div class="scrim"></div>
+
+        <div class="hero">
+          <div class="hero__meta hero__meta--l mono">Accelerated computing</div>
+          <div class="hero__meta hero__meta--r mono">Santa Clara · <span data-clock>--:--</span> PT</div>
+          <h1 class="hero__title">
+            <span class="hero__line hero__line--a" data-chars>Compute</span>
+            <span class="hero__line hero__line--b" data-chars>everything.</span>
+          </h1>
+          <p class="hero__lede hero__fade">From a grain of sand to the AI factory. The full stack for the age of intelligence: silicon, systems and software.</p>
+          <div class="hero__ctas hero__fade">
+            <a href="#industries" class="btn btn--green" data-magnetic>Explore the platform <span class="arr">→</span></a>
+          </div>
+          <div class="hero__hint mono hero__fade">Scroll to go from sand to intelligence</div>
+        </div>
+
+        <div class="story" data-a="0.13" data-b="0.33">
+          <div class="story__eyebrow mono"><span>01</span> · silicon</div>
+          <h2 class="story__title" data-split>It starts as a grain of sand.</h2>
+          <p class="story__sub" data-split>Purified, patterned, etched. Then etched again.</p>
+        </div>
+        <div class="story" data-a="0.36" data-b="0.56">
+          <div class="story__eyebrow mono"><span>02</span> · the blueprint</div>
+          <h2 class="story__title" data-split>Billions of transistors, drawn to the nanometer.</h2>
+          <p class="story__sub" data-split>Two dies stitched into one GPU, with memory stacked right beside it.</p>
+        </div>
+        <div class="story" data-a="0.60" data-b="0.79">
+          <div class="story__eyebrow mono"><span>03</span> · the factory</div>
+          <h2 class="story__title" data-split>Then it multiplies.</h2>
+          <p class="story__sub" data-split>One chip becomes a rack. A rack becomes an AI factory.</p>
+        </div>
+        <div class="story" data-a="0.83" data-b="1.1">
+          <div class="story__eyebrow mono"><span>04</span> · intelligence</div>
+          <h2 class="story__title" data-split>Out comes intelligence.</h2>
+          <p class="story__sub" data-split>Tokens, simulations, discoveries. Manufactured at scale.</p>
+        </div>
+
+        <div class="readout">
+          <div class="readout__num mono" data-gpus>0001</div>
+          <div class="readout__label mono">GPUs in frame</div>
+        </div>
+
+        <ol class="rail mono">
+          <li data-rail="0.13">Silicon</li>
+          <li data-rail="0.36">Blueprint</li>
+          <li data-rail="0.60">Factory</li>
+          <li data-rail="0.83">Intelligence</li>
+        </ol>
+        <div class="progress"><i></i></div>
+      </div>
+    </section>
+
+    <!-- ============ INDUSTRIES ============ -->
+    <section class="industries light" id="industries">
+      <div class="industries__head">
+        <h2 class="display" data-split data-reveal>Every industry, accelerated.</h2>
+        <p class="industries__lede" data-reveal>One platform, from the data center to the desktop. Point at an industry to see where it runs.</p>
+      </div>
+      <ul class="ind-list">
+        <li class="ind" data-reveal data-cursor="Explore">
+          <span class="ind__no mono">01</span><span class="ind__name">Artificial Intelligence</span>
+          <span class="ind__tags">Agentic AI, Nemotron open models, Dynamo inference</span>
+        </li>
+        <li class="ind" data-reveal data-cursor="Explore">
+          <span class="ind__no mono">02</span><span class="ind__name">Design &amp; Simulation</span>
+          <span class="ind__tags">Omniverse, SimReady assets, digital twins</span>
+        </li>
+        <li class="ind" data-reveal data-cursor="Explore">
+          <span class="ind__no mono">03</span><span class="ind__name">Supercomputing</span>
+          <span class="ind__tags">Earth-2 climate models, quantum simulation</span>
+        </li>
+        <li class="ind" data-reveal data-cursor="Explore">
+          <span class="ind__no mono">04</span><span class="ind__name">Gaming &amp; Creating</span>
+          <span class="ind__tags">GeForce RTX, DLSS 4.5, RTX Spark laptops</span>
+        </li>
+        <li class="ind" data-reveal data-cursor="Explore">
+          <span class="ind__no mono">05</span><span class="ind__name">Robotics</span>
+          <span class="ind__tags">Physical AI, Isaac, Omniverse libraries</span>
+        </li>
+        <li class="ind" data-reveal data-cursor="Explore">
+          <span class="ind__no mono">06</span><span class="ind__name">Automotive</span>
+          <span class="ind__tags">DRIVE AGX Thor, Alpamayo 2 Edge</span>
+        </li>
+      </ul>
+      <div class="preview" aria-hidden="true">
+        <div class="preview__art art--ai"><i></i><i></i><i></i></div>
+        <div class="preview__art art--sim"><i></i></div>
+        <div class="preview__art art--hpc"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="preview__art art--game"><i></i></div>
+        <div class="preview__art art--robot"><i></i><i></i><i></i><i></i></div>
+        <div class="preview__art art--auto"><i></i><i></i></div>
+        <span class="preview__tag mono"></span>
+      </div>
+    </section>
+
+    <!-- ============ LATEST (horizontal) ============ -->
+    <section class="latest" id="latest">
+      <div class="latest__sticky">
+        <div class="latest__head">
+          <h2 class="display" data-split data-reveal>Latest from the stack.</h2>
+          <div class="latest__count mono"><span data-latest-idx>01</span> / 06</div>
+        </div>
+        <div class="latest__track">
+          <article class="card" data-cursor="Read">
+            <div class="card__cover cover--1"><span class="mono">Automotive</span></div>
+            <h3>Alpamayo 2 Edge is here</h3>
+            <p>Adaptive AV reasoning, optimized for NVIDIA DRIVE AGX Thor.</p>
+          </article>
+          <article class="card" data-cursor="Read">
+            <div class="card__cover cover--2"><span class="mono">Open source</span></div>
+            <h3>OpenShell, donated to open source</h3>
+            <p>Cloud-native agent security and AI infrastructure tools, announced at KubeCon.</p>
+          </article>
+          <article class="card" data-cursor="Read">
+            <div class="card__cover cover--3"><span class="mono">Simulation</span></div>
+            <h3>Physical AI across Korea's industries</h3>
+            <p>Semiconductor fabs, robotics and autonomous driving, built in simulation first.</p>
+          </article>
+          <article class="card" data-cursor="Read">
+            <div class="card__cover cover--4"><span class="mono">Data center</span></div>
+            <h3>Sovereign AI with NVLink Fusion</h3>
+            <p>Partners build national AI infrastructure on one high-speed fabric.</p>
+          </article>
+          <article class="card" data-cursor="Read">
+            <div class="card__cover cover--5"><span class="mono">HPC</span></div>
+            <h3>Europe deploys Earth-2</h3>
+            <p>AI weather and climate models move from research into production.</p>
+          </article>
+          <article class="card" data-cursor="Read">
+            <div class="card__cover cover--6"><span class="mono">RTX</span></div>
+            <h3>RTX Spark laptops get new models</h3>
+            <p>Local AI agents, new open models, and DLSS 4.5 in the latest games.</p>
+          </article>
+        </div>
+        <div class="latest__bar"><i></i></div>
+      </div>
+    </section>
+
+    <!-- ============ MARQUEE ============ -->
+    <section class="marquee" aria-label="Platforms">
+      <div class="marquee__row" data-dir="1"><div class="marquee__inner">
+        <span>Blackwell</span><b>/</b><span>Vera</span><b>/</b><span>NVLink Fusion</span><b>/</b><span>DRIVE AGX Thor</span><b>/</b><span>Omniverse</span><b>/</b>
+      </div></div>
+      <div class="marquee__row marquee__row--ghost" data-dir="-1"><div class="marquee__inner">
+        <span>Nemotron</span><b>/</b><span>Dynamo</span><b>/</b><span>OpenShell</span><b>/</b><span>Earth-2</span><b>/</b><span>DLSS 4.5</span><b>/</b><span>Isaac</span><b>/</b>
+      </div></div>
+    </section>
+
+    <!-- ============ GTC CTA (slash reveal) ============ -->
+    <section class="cta" id="gtc">
+      <div class="cta__sticky">
+        <div class="cta__layer cta__layer--base">
+          <div class="cta__meta mono"><span>GTC Washington, D.C.</span><span>Nov 30 – Dec 3</span></div>
+          <div class="cta__big">GTC<br>D.C.</div>
+        </div>
+        <div class="cta__layer cta__layer--green">
+          <div class="cta__meta mono"><span>GTC Washington, D.C.</span><span>Nov 30 – Dec 3</span></div>
+          <div class="cta__big">GTC<br>D.C.</div>
+          <div class="cta__foot">
+            <p>Developers, researchers and business leaders, exploring the next wave of AI.</p>
+            <a href="#" class="btn btn--dark" data-magnetic>Get your pass <span class="arr">→</span></a>
+          </div>
+        </div>
+        <div class="cta__slash"></div>
+      </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="footer">
+      <div class="footer__cols">
+        <div><h4 class="mono">Platforms</h4><a href="#">Data Center</a><a href="#">GeForce RTX</a><a href="#">DRIVE</a><a href="#">Omniverse</a></div>
+        <div><h4 class="mono">Developers</h4><a href="#">CUDA</a><a href="#">NIM</a><a href="#">Nemotron</a><a href="#">Agent Toolkit</a></div>
+        <div><h4 class="mono">Company</h4><a href="#">About</a><a href="#">Newsroom</a><a href="#">Careers</a><a href="#">Investors</a></div>
+        <div class="footer__note"><p>Unofficial concept redesign.<br>Not affiliated with NVIDIA Corporation.</p></div>
+      </div>
+      <div class="footer__word" data-reveal aria-hidden="true">
+        <span class="c"><span class="ci">N</span></span><span class="c"><span class="ci">V</span></span><span class="c"><span class="ci">I</span></span><span class="c"><span class="ci">D</span></span><span class="c"><span class="ci">I</span></span><span class="c"><span class="ci">A</span></span>
+      </div>
+    </footer>
+  </main>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>
